@@ -3,19 +3,26 @@ html{
 }
 body{
     background-color: aliceblue;
-    height: 100%;
+    height: calc(100% - 50px);;
     padding: 20px;
 }
 .notif{
     background-color: #8f9fffa9;
     color: black;
     border-radius: 10px;
+    font-weight: bold;
     font-size: 20px;
+    text-align: center;
     border: solid #384bfc 1px;
-    width: 100%;
+    width: 80%;
+    height: 20px;
+    margin: auto auto 30px auto;
+    padding: 5px;
+    transition: all .4s;
 }
 .des{
-    display: none;
+    transition: all .4s;
+    opacity: 0;
 }
 main{
     background-color:#353535;
@@ -67,8 +74,8 @@ main{
 .game{
     padding: 10px;
     margin: auto;
-    width: 800px;
-    height: 800px;
+    width: 700px;
+    height: 700px;
     display: grid;
     grid-template-columns: repeat(50,1fr);
     grid-template-rows: repeat(50,1fr);

@@ -41,6 +41,26 @@ let listJoueur = {
     "yellow":{},
     "green":{}
 }
+let casePos = {
+    "blue":[],
+    "red":[],
+    "yellow":[],
+    "green":[]
+}
+
+let createCase = (posX, posY, cle) => {
+    for(key in casePos){
+        for(i=0;i<casePos[key].length;i++){
+            if(casePos[key][i]['xPos'] == posX && casePos[key][i]['yPos'] == posY){
+                casePos[key].splice(i, i);
+            }
+        }
+    }
+    casePos[cle].push({
+        'xPos': posX,
+        'yPos': posY
+    })
+}
 
 app.get('/',(req, res) => {
     res.sendFile(__dirname+'/index.html');
@@ -48,7 +68,7 @@ app.get('/',(req, res) => {
 
 io.on('connection', (socket) => {
     console.log(socket.id+" is connected");
-    socket.emit('allPosUser',listJoueur);
+    socket.emit('allPosUser',listJoueur,casePos);
     socket.on('userInfo',(name) => {
         for(key in listJoueur){
             if(Object.keys(listJoueur[key]).length == 0){
@@ -65,16 +85,20 @@ io.on('connection', (socket) => {
         let key = Object.keys(listJoueur).find(key => listJoueur[key]['socket'] === socket.id);
         if(key != undefined){
             if(direction == 'up' && 0<listJoueur[key]['yPos']){
-                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], listJoueur[key]['xPos']+50*(listJoueur[key]['yPos']-1), listJoueur[key], key)
+                createCase(listJoueur[key]['xPos'], listJoueur[key]['yPos'], key);
+                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], listJoueur[key]['xPos']+50*(listJoueur[key]['yPos']-1), listJoueur[key], key);
                 listJoueur[key]['yPos']--;
             }else if(direction == 'down' && 49>listJoueur[key]['yPos']){
-                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], listJoueur[key]['xPos']+50*(listJoueur[key]['yPos']+1), listJoueur[key], key)
+                createCase(listJoueur[key]['xPos'], listJoueur[key]['yPos'], key);
+                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], listJoueur[key]['xPos']+50*(listJoueur[key]['yPos']+1), listJoueur[key], key);
                 listJoueur[key]['yPos']++;
             }else if(direction == 'left' && listJoueur[key]['xPos']>0){
-                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], (listJoueur[key]['xPos']-1)+50*listJoueur[key]['yPos'], listJoueur[key], key)
+                createCase(listJoueur[key]['xPos'], listJoueur[key]['yPos'], key);
+                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], (listJoueur[key]['xPos']-1)+50*listJoueur[key]['yPos'], listJoueur[key], key);
                 listJoueur[key]['xPos']--;
             }else if(direction == 'right' && listJoueur[key]['xPos']<49){
-                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], (listJoueur[key]['xPos']+1)+50*listJoueur[key]['yPos'], listJoueur[key], key)
+                createCase(listJoueur[key]['xPos'], listJoueur[key]['yPos'], key);
+                io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], (listJoueur[key]['xPos']+1)+50*listJoueur[key]['yPos'], listJoueur[key], key);
                 listJoueur[key]['xPos']++;
             }
         }else{
@@ -86,8 +110,9 @@ io.on('connection', (socket) => {
         console.log(socket.id+" is disconnect");
         for(key in listJoueur){
             if(listJoueur[key]['socket'] == socket.id){ 
-                io.emit('userDespawn', listJoueur[key], key);
+                io.emit('userDespawn',casePos[key] , listJoueur[key], key);
                 listJoueur[key]={};
+                casePos[key]=[];
             }
         }
     })
