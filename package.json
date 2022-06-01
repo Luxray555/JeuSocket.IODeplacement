@@ -1,0 +1,28 @@
+{
+  "name": "gameinfo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Luxray555",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.0-beta1",
+    "cookie-parser": "^1.4.6",
+    "eiows": "^4.1.2",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16",
+    "request": "^2.88.2",
+    "socket.io": "^4.5.1"
+  },
+  "description": "",
+  "optionalDependencies": {
+    "bufferutil": "^4.0.6",
+    "utf-8-validate": "^5.0.9"
+  }
+}
