@@ -59,6 +59,13 @@ socket.on('userSpawn', (spawn, color) => {
 })
 
 socket.on('userDespawn', (casePosC , spawn, color) => {
+    notifDoc.classList.remove('des');
+    notifDoc.innerHTML = "Deconnection de <strong>"+spawn['pseudo']+"</strong>";
+    let timeout1 = setTimeout(() => {
+        notifDoc.classList.add('des');
+        setTimeout(() => notifDoc.innerHTML = "",400);
+        clearTimeout(timeout1);
+    },2000);
     caseGame[(spawn['xPos']+50*spawn['yPos'])].classList.remove(color);
     for(i=0;i<casePosC.length;i++){
         caseGame[casePosC[i]['xPos']+50*casePosC[i]['yPos']].className = 'case';
@@ -66,9 +73,11 @@ socket.on('userDespawn', (casePosC , spawn, color) => {
 })
 
 socket.on('refreshPos',(oldPos, newPos, spawn, color) => {
-    caseGame[newPos].classList.add(color);
+    caseGame[newPos].className = "case "+color;
     caseGame[oldPos].setAttribute('pseudo-value', "");
+    caseGame[oldPos].style.borderRadius = "0px";
     caseGame[newPos].setAttribute('pseudo-value', spawn['pseudo']);
+    caseGame[newPos].style.borderRadius = "10px";
 });
 
 socket.on('reboot', () => {

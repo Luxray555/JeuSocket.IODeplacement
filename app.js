@@ -1,10 +1,7 @@
 //require
 let express = require('express');
 const session = require('express-session');
-const url = require('url');
 const cookieParser = require("cookie-parser");
-let mysql = require('mysql');
-const EventEmitter = require('events');
 const { emit } = require('process');
 
 //Create web app
@@ -18,7 +15,7 @@ app.use(express.static('public'));
 app.use(session({
   
     // It holds the secret key for session
-    secret: 'jhzrfjhrsedg',
+    secret: 'djyhsgfjuzsdgfujyzgsfdehgdh',
     
     //Set options cookies
     cookie: { maxAge: 86400000 },
@@ -39,20 +36,28 @@ let listJoueur = {
     "blue":{},
     "red":{},
     "yellow":{},
-    "green":{}
+    "green":{},
+    "cyan":{},
+    "orange":{},
+    "pink":{},
+    "purple":{}
 }
 let casePos = {
     "blue":[],
     "red":[],
     "yellow":[],
-    "green":[]
+    "green":[],
+    "cyan":[],
+    "orange":[],
+    "pink":[],
+    "purple":[]
 }
 
 let createCase = (posX, posY, cle) => {
     for(key in casePos){
         for(i=0;i<casePos[key].length;i++){
             if(casePos[key][i]['xPos'] == posX && casePos[key][i]['yPos'] == posY){
-                casePos[key].splice(i, i);
+                casePos[key].splice(i, 1);
             }
         }
     }

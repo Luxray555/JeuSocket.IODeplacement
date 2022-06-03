@@ -14,7 +14,7 @@ body{
     font-size: 20px;
     text-align: center;
     border: solid #384bfc 1px;
-    width: 80%;
+    width: 700px;
     height: 20px;
     margin: auto auto 30px auto;
     padding: 5px;
@@ -44,6 +44,7 @@ main{
 }
 .connect h1{
     text-align: center;
+    color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0px auto 20px auto;
 }
@@ -138,6 +139,66 @@ main{
     background-color: green !important;
 }
 .green::after{
+    position: absolute;
+    text-align: center;
+    content: attr(pseudo-value);
+    color: #292929;
+    font-size: 20px;
+    transform: translateX(-50%);
+    text-shadow: -1px 1px 0 #ffffff,
+                          1px 1px 0 #ffffff,
+                         1px -1px 0 #ffffff,
+                        -1px -1px 0 #ffffff;
+}
+.cyan{
+    background-color: cyan !important;
+}
+.cyan::after{
+    position: absolute;
+    text-align: center;
+    content: attr(pseudo-value);
+    color: #292929;
+    font-size: 20px;
+    transform: translateX(-50%);
+    text-shadow: -1px 1px 0 #ffffff,
+                          1px 1px 0 #ffffff,
+                         1px -1px 0 #ffffff,
+                        -1px -1px 0 #ffffff;
+}
+.orange{
+    background-color: orange !important;
+}
+.orange::after{
+    position: absolute;
+    text-align: center;
+    content: attr(pseudo-value);
+    color: #292929;
+    font-size: 20px;
+    transform: translateX(-50%);
+    text-shadow: -1px 1px 0 #ffffff,
+                          1px 1px 0 #ffffff,
+                         1px -1px 0 #ffffff,
+                        -1px -1px 0 #ffffff;
+}
+.pink{
+    background-color: pink !important;
+}
+.pink::after{
+    position: absolute;
+    text-align: center;
+    content: attr(pseudo-value);
+    color: #292929;
+    font-size: 20px;
+    transform: translateX(-50%);
+    text-shadow: -1px 1px 0 #ffffff,
+                          1px 1px 0 #ffffff,
+                         1px -1px 0 #ffffff,
+                        -1px -1px 0 #ffffff;
+}
+.purple{
+    background-color: purple !important;
+}
+.purple::after{
     position: absolute;
     text-align: center;
     content: attr(pseudo-value);
