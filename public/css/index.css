@@ -5,6 +5,7 @@ body{
     background-color: aliceblue;
     height: calc(100% - 50px);;
     padding: 20px;
+    overflow: hidden;  
 }
 .notif{
     background-color: #8f9fffa9;
@@ -14,7 +15,7 @@ body{
     font-size: 20px;
     text-align: center;
     border: solid #384bfc 1px;
-    width: 700px;
+    max-width: 700px;
     height: 20px;
     margin: auto auto 30px auto;
     padding: 5px;
@@ -25,11 +26,12 @@ body{
     opacity: 0;
 }
 main{
-    background-color:#353535;
-    border-radius: 10px;
-    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    width: max-content;
+    width: 100%;
+    flex-wrap: wrap;
 }
 .connect{
     position: absolute;
@@ -44,28 +46,29 @@ main{
 }
 .connect h1{
     text-align: center;
+    font-size: 2.5vw;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 0px auto 20px auto;
+    margin: 0px auto 2vw auto;
 }
 .connect #choosePseudo{
     text-align: center;
-    padding: 5px;
+    padding: 0.5vw;
     border-radius: 10px;
     border: solid black 1px;
-    font-size: 20px;
+    font-size: 2vw;
 }
 .connect .playBtn{
     width: 100%;
-    margin-top: 10px;
+    margin-top: 1vw;
     text-align: center;
 }
 .connect #playBtn{
     cursor: pointer;
-    font-size: 19px;
+    font-size: 2vw;
     border: solid 1px #000000;
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 0.5vw 1vw;
+    border-radius: 1vw;
     background-color: #ffffff;
     transition: all .4s;
 }
@@ -73,13 +76,16 @@ main{
     background-color: #aaaaaa;
 }
 .game{
+    background-color:#353535;
+    border-radius: 10px;
     padding: 10px;
-    margin: auto;
-    width: 700px;
-    height: 700px;
+    width: 40vw;
+    min-width: 300px;
+    height: 40vw;
+    min-height: 300px;
     display: grid;
-    grid-template-columns: repeat(50,1fr);
-    grid-template-rows: repeat(50,1fr);
+    grid-template-columns: repeat(auto-fill, 2%);
+    grid-template-rows: repeat(auto-fill, 2%);
 }
 .game.noPlay{
     opacity: 0.2;
@@ -90,123 +96,39 @@ main{
     background-color: white;
     border: solid 1px black;
 }
-.blue{
-    background-color: blue !important;
-}
-.blue::after{
+.game .case::after{
     position: absolute;
     text-align: center;
     content: attr(pseudo-value);
     color: #292929;
-    font-size: 20px;
+    font-size: 1.4vw;
     transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
+    text-shadow: -0.1vw 0.1vw 0 #ffffff,
+                          0.1vw 0.1vw 0 #ffffff,
+                          0.1vw -0.1vw 0 #ffffff,
+                        -0.1vw -0.1vw 0 #ffffff;
+}
+.blue{
+    background-color: blue !important;
 }
 .red{
     background-color: red !important;
 }
-.red::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
-}
 .yellow{
     background-color: yellow !important;
-}
-.yellow::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
 }
 .green{
     background-color: green !important;
 }
-.green::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
-}
 .cyan{
     background-color: cyan !important;
-}
-.cyan::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
 }
 .orange{
     background-color: orange !important;
 }
-.orange::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
-}
 .pink{
     background-color: pink !important;
 }
-.pink::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
-}
 .purple{
     background-color: purple !important;
-}
-.purple::after{
-    position: absolute;
-    text-align: center;
-    content: attr(pseudo-value);
-    color: #292929;
-    font-size: 20px;
-    transform: translateX(-50%);
-    text-shadow: -1px 1px 0 #ffffff,
-                          1px 1px 0 #ffffff,
-                         1px -1px 0 #ffffff,
-                        -1px -1px 0 #ffffff;
 }
