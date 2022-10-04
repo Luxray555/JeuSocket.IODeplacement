@@ -106,8 +106,6 @@ io.on('connection', (socket) => {
                 io.emit('refreshPos', listJoueur[key]['xPos']+50*listJoueur[key]['yPos'], (listJoueur[key]['xPos']+1)+50*listJoueur[key]['yPos'], listJoueur[key], key);
                 listJoueur[key]['xPos']++;
             }
-        }else{
-            socket.emit('reboot');
         }
         delete key;
     })
